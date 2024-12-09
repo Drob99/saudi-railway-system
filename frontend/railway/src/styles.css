@@ -48,3 +48,118 @@ button {
   color: white;
   text-decoration: underline;
 }
+
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.railway-system {
+  text-align: center;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  margin: 0 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+.train-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.train-card {
+  background-color: #ffffff;
+  width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  text-align: left;
+}
+
+.train-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.train-logo {
+  width: 40px;
+  height: 40px;
+}
+
+.train-number {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.train-date {
+  color: #888;
+  font-size: 14px;
+}
+
+.train-card-body {
+  margin-bottom: 16px;
+}
+
+.train-route {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.train-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.train-seats,
+.train-price {
+  font-size: 14px;
+  color: #555;
+}
+
+.book-button {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.book-button:hover {
+  background-color: #218838;
+}
