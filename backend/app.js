@@ -10,7 +10,6 @@ const tripRoutes = require('./routes/tripRoutes');
 
 const app = express();
 
-const port = process.env.PORT || 3000;
 
 // Enable security headers
 app.use(helmet());
@@ -42,10 +41,7 @@ app.use((err, req, res, next) => {
   res.status(500).send({ error: 'Something went wrong!' });
 });
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
+
 // Export the app
 module.exports = app;
 
