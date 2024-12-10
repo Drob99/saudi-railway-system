@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 export const Login = (props) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -40,10 +38,6 @@ export const Login = (props) => {
         onClick={() => props.onFormSwitch("register")}
       >
         Don't have an account? Register here.
-      </button>
-      {/* Navigate to Railway System */}
-      <button className="link-btn" onClick={() => navigate("/railway")}>
-        Go to Railway System
       </button>
     </div>
   );
