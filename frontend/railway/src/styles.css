@@ -265,3 +265,162 @@ body {
   background-color: #017F99;
 }
 
+/* Styling the horizontal navigation bar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Center the navigation bar's items */
+  align-items: center;
+  padding: 10px 20px;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+/* Style for the navigation links list to ensure horizontal layout */
+.nav-links {
+  display: flex;
+  gap: 10px; /* Add spacing between buttons */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* General button style */
+.nav-link {
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 16px;
+  color: black;
+  border: 1px solid black;
+  border-radius: 25px; /* Round edges */
+  background-color: transparent;
+  transition: background-color 0.4s ease, color 0.4s ease, border 0.4s ease;
+  flex: 1; /* Ensures buttons are equal in size */
+  text-align: center;
+}
+
+/* Hover effect */
+.nav-link:hover {
+  background-color: #017F99;
+  color: white;
+  border: none; /* Remove border on hover */
+}
+
+
+.ticket-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.ticket-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.ticket-card {
+  position: relative;
+  width: 300px;
+  color: #017F99;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+
+/* Ticket image at the top left */
+.ticket-image {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 40px;
+  height: 40px;
+}
+
+.ticket-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+/* Status at the top right */
+.ticket-status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  color: white;
+}
+
+.ticket-info {
+  margin: 50px 0 20px 0;
+}
+
+.ticket-name {
+  font-weight: bold;
+}
+
+.ticket-contact,
+.ticket-date {
+  color: grey;
+}
+
+.ticket-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ticket-btn {
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+.add-btn {
+  color: #000000;
+  background-color: transparent;
+  border: 1px solid #017f99;
+}
+
+.edit-btn {
+  color: #000000;
+  background-color: transparent;
+  border: 1px solid #017f99;
+}
+
+.cancel-btn {
+  color: #000000;
+  background-color: transparent;
+  border: 1px solid red;
+}
+
+.edit-btn:hover {
+  color: white;
+  background-color: #017f99;
+  transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+  color: white;
+  background-color: #017f99;
+  transition: background-color 0.3s ease;
+}
+
+.cancel-btn:hover {
+  color: white;
+  background-color: red;
+  transition: background-color 0.3s ease;
+}

@@ -178,7 +178,7 @@ const RailwaySystem = () => {
 
   return (
     <div className="railway-system">
-      <h1>Railway System</h1>
+      <h1 class = "railway-system-title">Home page</h1>
       <div className="search-form">
         <input
           type="text"
