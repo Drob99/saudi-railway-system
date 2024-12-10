@@ -7,13 +7,22 @@ const authRoutes = require('./routes/authRoutes');
 const bookingRoutes = require('./routes/bookingRoutes');
 const passengerRoutes = require('./routes/passengerRoutes');
 const tripRoutes = require('./routes/tripRoutes');
+const reportRoutes = require("./routes/reportRoutes");
+const paymentRoutes = require("./routes/paymentRoutes");
+const trainRoutes = require("./routes/trainRoutes");
 
 const app = express();
 
-const port = process.env.PORT || 3000;
-
 // Enable security headers
 app.use(helmet());
+
+// ! Enable CORS with specific configuration
+// const corsOptions = {
+//   origin: 'http://your-frontend-domain.com', // Replace with your frontend's URL
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//   credentials: true,
+// };
+// app.use(cors(corsOptions));
 
 // Enable CORS for all routes
 app.use(cors());  // This allows all origins to access your API
@@ -21,8 +30,10 @@ app.use(cors());  // This allows all origins to access your API
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-// Add a middleware for logging requests
-app.use(morgan('dev'));
+// Add logging middleware for development
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 
 // Register your routes
 app.use('/admin', adminRoutes);
@@ -30,22 +41,25 @@ app.use('/auth', authRoutes);
 app.use('/booking', bookingRoutes);
 app.use('/passenger', passengerRoutes);
 app.use('/trip', tripRoutes);
+app.use("/reports", reportRoutes);
+app.use("/payments", paymentRoutes);
+app.use("/trains", trainRoutes);
 
 // Default route
 app.get('/', (req, res) => {
   res.send('API is running');
 });
 
-// error handling for middleware
+// Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send({ error: 'Something went wrong!' });
+  res.status(err.status || 500).json({
+    message: err.message || 'Something went wrong!',
+    error: process.env.NODE_ENV === 'development' ? err : {},
+  });
 });
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
+
 // Export the app
 module.exports = app;
 
