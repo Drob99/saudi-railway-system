@@ -10,7 +10,7 @@ const RailwaySystem = () => {
       source: "Mumbai",
       destination: "Delhi",
       seatsLeft: 100,
-      price: "$50",
+      price: 50,
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ const RailwaySystem = () => {
       source: "Chennai",
       destination: "Bangalore",
       seatsLeft: 75,
-      price: "$40",
+      price: 40,
     },
     {
       id: 3,
@@ -28,7 +28,7 @@ const RailwaySystem = () => {
       source: "Kolkata",
       destination: "Pune",
       seatsLeft: 50,
-      price: "$60",
+      price: 60,
     },
   ];
 
@@ -38,6 +38,9 @@ const RailwaySystem = () => {
     date: "",
   });
   const [filteredTrains, setFilteredTrains] = useState(trains);
+  const [selectedTrain, setSelectedTrain] = useState(null);
+  const [passengers, setPassengers] = useState([]);
+  const [formError, setFormError] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -55,6 +58,123 @@ const RailwaySystem = () => {
     );
     setFilteredTrains(result);
   };
+
+  const handleBookTicket = (train) => {
+    setSelectedTrain(train);
+  };
+
+  const handleAddPassenger = () => {
+    setPassengers([
+      ...passengers,
+      { firstName: "", lastName: "", iqamaID: "", seatNumber: "", contact: "" },
+    ]);
+  };
+
+  const handleRemovePassenger = () => {
+    if (passengers.length > 0) {
+      setPassengers(passengers.slice(0, -1));
+    }
+  };
+
+  const handlePassengerChange = (index, field, value) => {
+    const updatedPassengers = [...passengers];
+    updatedPassengers[index][field] = value;
+    setPassengers(updatedPassengers);
+  };
+
+  const validateForm = () => {
+    for (let passenger of passengers) {
+      if (
+        !passenger.firstName ||
+        !passenger.lastName ||
+        !passenger.iqamaID ||
+        !passenger.seatNumber ||
+        (!passenger.contact && !passenger.email)
+      ) {
+        setFormError("Please fill all mandatory fields.");
+        return false;
+      }
+    }
+    setFormError("");
+    return true;
+  };
+
+  const handleSubmit = () => {
+    if (validateForm()) {
+      alert("Booking confirmed!");
+    }
+  };
+
+  if (selectedTrain) {
+    const totalPrice = selectedTrain.price * passengers.length * 1.15;
+
+    return (
+      <div className="booking-form">
+        <div className="left-section">
+          <h1>{selectedTrain.number}</h1>
+          <div className="button-container">
+            <button onClick={handleRemovePassenger}>Remove Passenger</button>
+            <button onClick={handleAddPassenger}>Add Passenger</button>
+          </div>
+          {passengers.map((passenger, index) => (
+            <div key={index} className="passenger-form">
+              <input
+                type="text"
+                placeholder="First Name"
+                value={passenger.firstName}
+                onChange={(e) =>
+                  handlePassengerChange(index, "firstName", e.target.value)
+                }
+              />
+              <input
+                type="text"
+                placeholder="Last Name"
+                value={passenger.lastName}
+                onChange={(e) =>
+                  handlePassengerChange(index, "lastName", e.target.value)
+                }
+              />
+              <input
+                type="text"
+                placeholder="Iqama ID"
+                value={passenger.iqamaID}
+                onChange={(e) =>
+                  handlePassengerChange(index, "iqamaID", e.target.value)
+                }
+              />
+              <input
+                type="text"
+                placeholder="Seat Number"
+                value={passenger.seatNumber}
+                onChange={(e) =>
+                  handlePassengerChange(index, "seatNumber", e.target.value)
+                }
+              />
+              <input
+                type="text"
+                placeholder="Phone or Email"
+                value={passenger.contact}
+                onChange={(e) =>
+                  handlePassengerChange(index, "contact", e.target.value)
+                }
+              />
+            </div>
+          ))}
+          {formError && <p className="error">{formError}</p>}
+        </div>
+        <div className="right-section">
+          <h2>Booking Summary</h2>
+          <p>From: {selectedTrain.source}</p>
+          <p>To: {selectedTrain.destination}</p>
+          <p>Date: {selectedTrain.date}</p>
+          <p>Passengers: {passengers.length}</p>
+          <p>Price per ticket: ${selectedTrain.price}</p>
+          <p>Total Price (15% VAT): ${totalPrice.toFixed(2)}</p>
+          <button onClick={handleSubmit}>Book Ticket</button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="railway-system">
@@ -102,14 +222,21 @@ const RailwaySystem = () => {
               </div>
               <div className="train-card-body">
                 <p className="train-route">
-                  {train.source} → {train.destination}
+                  From {train.source} to {train.destination}
                 </p>
                 <div className="train-info">
-                  <span className="train-seats">Seats Left: {train.seatsLeft}</span>
-                  <span className="train-price">Price: {train.price}</span>
+                  <span className="train-seats">
+                    Seats Left: {train.seatsLeft}
+                  </span>
+                  <span className="train-price">Price: ${train.price}</span>
                 </div>
               </div>
-              <button className="book-button">Book Ticket</button>
+              <button
+                onClick={() => handleBookTicket(train)}
+                className="book-button"
+              >
+                Book Ticket
+              </button>
             </div>
           ))
         ) : (

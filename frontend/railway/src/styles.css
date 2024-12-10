@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   color: white;
-  background-image: linear-gradient(90deg, #F9F6EE, #017F99);
+  background-image: linear-gradient(180deg, #F9F6EE, #017F99);
 }
 
 .auth-form-container, .login-form, .register-form {
@@ -61,6 +61,10 @@ body {
   text-align: center;
 }
 
+.railway-system-title {
+  -webkit-text-stroke: 1px #017F99;
+}
+
 .search-form {
   display: flex;
   justify-content: center;
@@ -76,15 +80,15 @@ body {
 
 .search-button {
   padding: 8px 16px;
-  background-color: #007bff;
-  color: white;
+  background-color: #ffffff;
+  color: #017F99;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
 .search-button:hover {
-  background-color: #0056b3;
+  background-color: #F9F6EE;
 }
 
 .train-cards {
@@ -97,7 +101,7 @@ body {
 .train-card {
   background-color: #ffffff;
   width: 300px;
-  border: 1px solid #ddd;
+  border: 1px solid #000000;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 16px;
@@ -119,6 +123,7 @@ body {
 .train-number {
   font-weight: bold;
   font-size: 16px;
+  color: #017F99;
 }
 
 .train-date {
@@ -134,6 +139,7 @@ body {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 8px;
+  color: #017F99;
 }
 
 .train-info {
@@ -151,15 +157,111 @@ body {
   display: block;
   width: 100%;
   padding: 8px 16px;
-  background-color: #28a745;
+  background-color: black;
   color: white;
   border: none;
   border-radius: 4px;
   text-align: center;
   font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .book-button:hover {
-  background-color: #218838;
+  background-color: #017F99;
 }
+
+/* Booking Form */
+.booking-form {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  gap: 20px;
+}
+
+.left-section {
+  flex: 1.5; /* Adjusted to give more space to the right-section */
+  background: #f1f1f1;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.left-section h1 {
+  margin-bottom: 20px;
+  color: #017F99;
+}
+
+.passenger-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.passenger-form input {
+  flex: 1 1 calc(50% - 10px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+/* Styling for button container */
+.button-container {
+  display: flex;
+  gap: 10px; /* Adds space between the buttons */
+  margin-bottom: 20px; /* Adds space below the button container */
+}
+
+.button-container button {
+  padding: 10px 15px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition effect */
+}
+
+.button-container button:hover {
+  background-color: #017F99;
+}
+
+.right-section {
+  flex: 1.2; /* Increased to make the right-section wider */
+  background: #f1f1f1;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.right-section h2 {
+  margin-bottom: 15px;
+  color: #017F99;
+}
+
+.right-section p {
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+.right-section button {
+  width: 100%;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.right-section button:hover {
+  background-color: #017F99;
+}
+
