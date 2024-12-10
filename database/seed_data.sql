@@ -45,14 +45,14 @@ INSERT INTO Trip (TripID, TrainID, TrackID, OriginStationID, DestinationStationI
 (6, 3, 7, 6, 7, '2024-12-13 10:00:00', '2024-12-13 15:00:00', 2, TRUE); -- Hail to Tabuk
 
 -- Insert Persons
-INSERT INTO Person (FName, MInit, LName, Email, Phone) VALUES
-('Ahmed', 'M', 'Al-Farhan', 'ahmed@example.com', '0551234567'),
-('Sarah', 'A', 'Al-Zahrani', 'sarah@example.com', '0509876543'),
-('Khalid', 'R', 'Al-Otaibi', 'khalid@example.com', '0548765432'),
-('Noura', 'B', 'Al-Shehri', 'noura@example.com', '0531237894'),
-('Ali', 'H', 'Al-Qahtani', 'ali@example.com', '0566543210'),
-('Layla', 'A', 'Al-Harbi', 'layla@example.com', '0571122334'),
-('Mansour', 'F', 'Al-Juhani', 'mansour@example.com', '0589988776');
+INSERT INTO Person (FName, MInit, LName, Email, Password, Phone) VALUES
+('Ahmed', 'M', 'Al-Farhan', 'ahmed@example.com', '$2y$10$O5xwbXQByeEvDgI7fbwOJ.1RkDs6fn5vC4aay3KiPWMnpMTrnkNAO', '0551234567'),
+('Sarah', 'A', 'Al-Zahrani', 'sarah@example.com', '$2y$10$O5xwbXQByeEvDgI7fbwOJ.1RkDs6fn5vC4aay3KiPWMnpMTrnkNAO', '0509876543'),
+('Khalid', 'R', 'Al-Otaibi', 'khalid@example.com', '$2y$10$O5xwbXQByeEvDgI7fbwOJ.1RkDs6fn5vC4aay3KiPWMnpMTrnkNAO', '0548765432'),
+('Noura', 'B', 'Al-Shehri', 'noura@example.com', '$2y$10$O5xwbXQByeEvDgI7fbwOJ.1RkDs6fn5vC4aay3KiPWMnpMTrnkNAO','0531237894'),
+('Ali', 'H', 'Al-Qahtani', 'ali@example.com', '$2y$10$O5xwbXQByeEvDgI7fbwOJ.1RkDs6fn5vC4aay3KiPWMnpMTrnkNAO', '0566543210'),
+('Layla', 'A', 'Al-Harbi', 'layla@example.com', '$2y$10$O5xwbXQByeEvDgI7fbwOJ.1RkDs6fn5vC4aay3KiPWMnpMTrnkNAO', '0571122334'),
+('Mansour', 'F', 'Al-Juhani', 'mansour@example.com', '$2y$10$O5xwbXQByeEvDgI7fbwOJ.1RkDs6fn5vC4aay3KiPWMnpMTrnkNAO', '0589988776');
 
 -- Insert Passengers
 INSERT INTO Passenger (PersonID, IdentificationDoc, LoyaltyKilometers) VALUES
