@@ -61,6 +61,7 @@ CREATE TABLE Person (
     MInit CHAR(1),
     LName VARCHAR(100) NOT NULL,
     Email VARCHAR(100) NOT NULL UNIQUE,
+    Password VARCHAR(255) NOT NULL, -- Added to store hashed passwords
     Phone VARCHAR(15),
     PRIMARY KEY(PersonID)
 );
