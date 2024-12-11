@@ -501,7 +501,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding: 20px;
   background-color: #f8f9fa;
   border-bottom: 1px solid #e0e0e0;
 }
@@ -515,8 +515,8 @@ body {
 .train-card-number {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #333;
-  margin-right: auto;
+  color: #017F99;
+  margin-right: 10px;
 }
 
 .train-card-date {
@@ -575,27 +575,27 @@ body {
   padding: 10px 15px;
   font-size: 1rem;
   color: #ffffff;
-  background-color: #007bff;
+  background-color: black;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   text-align: center;
-  transition: background-color 0.3s ease;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .train-card-assign-button:hover {
-  background-color: #0056b3;
+  background-color: #017F99;
 }
 
 /* Card Container */
 .train-card-item {
-  border: 1px solid #e0e0e0;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   margin: 15px 0;
-  background-color: #fff;
-  max-width: 400px;
+  background-color: #ffffff;
+  max-width: 500px;
 }
 
 .trains-cards-container {
@@ -608,8 +608,6 @@ body {
 
 .trains-system {
   padding: 20px;
-  background-color: #f4f4f4;
-  min-height: 100vh;
 }
 
 .trains-system-title {
