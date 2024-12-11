@@ -180,7 +180,7 @@ body {
 }
 
 .left-section {
-  flex: 1.5; /* Adjusted to give more space to the right-section */
+  flex: 1.5;
   background: #f1f1f1;
   padding: 20px;
   border-radius: 8px;
@@ -330,11 +330,11 @@ body {
   width: 300px;
   color: #017F99;
   background-color: white;
+  border: 1px solid #000000;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 10px;
   text-align: left;
-  border: 1px solid #ccc;
 }
 
 /* Ticket image at the top left */
@@ -423,4 +423,196 @@ body {
   color: white;
   background-color: red;
   transition: background-color 0.3s ease;
+}
+
+/* Container styling */
+.reservations-container {
+  padding: 20px;
+  text-align: center;
+}
+
+/* Search bar styling */
+.search-bar {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.search-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 300px;
+}
+
+.search-button {
+  padding: 8px 16px;
+  background-color: #017F99;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #015d70;
+}
+
+/* Error message styling */
+.error-message {
+  color: red;
+  margin-bottom: 20px;
+}
+
+/* Reservation card styling */
+.reservation-card {
+  width: 400px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: left;
+  position: relative;
+}
+
+/* Status badge styling */
+.reservation-status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+/* Reservation details styling */
+.reservation-info p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: black;
+}
+
+/* Top section: Train logo, number, and date */
+.train-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.train-card-logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.train-card-number {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #017F99;
+  margin-right: 10px;
+}
+
+.train-card-date {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Capacity section: Economy and Business */
+.train-card-body {
+  padding: 15px;
+  background-color: #ffffff;
+}
+
+.train-card-capacity {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.train-card-capacity-info {
+  font-size: 0.9rem;
+  color: #888;
+  text-align: center;
+  flex: 1;
+}
+
+/* Station list */
+.train-card-stations {
+  padding: 10px 0;
+}
+
+.train-card-stations h3 {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+.train-card-stations ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.train-card-stations li {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 5px 0;
+}
+
+/* Assign Staff Button */
+.train-card-assign-button {
+  display: block;
+  width: 100%;
+  margin: 15px auto 0;
+  padding: 10px 15px;
+  font-size: 1rem;
+  color: #ffffff;
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.train-card-assign-button:hover {
+  background-color: #017F99;
+}
+
+/* Card Container */
+.train-card-item {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 15px 0;
+  background-color: #ffffff;
+  max-width: 500px;
+}
+
+.trains-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.trains-system {
+  padding: 20px;
+}
+
+.trains-system-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
 }

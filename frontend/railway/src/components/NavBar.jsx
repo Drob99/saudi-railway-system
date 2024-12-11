@@ -20,6 +20,16 @@ const NavBar = () => {
             Trains
           </Link>
         </li>
+        <li>
+          <Link to="/reservations" className="nav-link">
+            Reservations
+          </Link>
+        </li>
+        <li>
+          <Link to="/login" className="nav-link">
+            Log out
+          </Link>
+        </li>
       </ul>
     </nav>
   );

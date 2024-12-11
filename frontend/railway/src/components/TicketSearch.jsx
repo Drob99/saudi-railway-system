@@ -42,32 +42,7 @@ const TicketSearch = () => {
   };
 
   const handleSearch = () => {
-    const filteredTickets = [
-      {
-        id: 1,
-        firstName: "John",
-        lastName: "Doe",
-        status: "confirmed",
-        contact: "john.doe@example.com",
-        date: "2024-01-15",
-      },
-      {
-        id: 2,
-        firstName: "Jane",
-        lastName: "Smith",
-        status: "pending",
-        contact: "123-456-7890",
-        date: "2024-02-20",
-      },
-      {
-        id: 3,
-        firstName: "Alice",
-        lastName: "Johnson",
-        status: "waitlisted",
-        contact: "alicejohnson@mail.com",
-        date: "2024-03-10",
-      },
-    ].filter((ticket) => {
+    const filteredTickets = tickets.filter((ticket) => {
       return (
         (searchFilters.firstName === "" ||
           ticket.firstName
@@ -83,6 +58,14 @@ const TicketSearch = () => {
     });
 
     setTickets(filteredTickets);
+  };
+
+  const handleStatusChange = (id, newStatus) => {
+    setTickets((prevTickets) =>
+      prevTickets.map((ticket) =>
+        ticket.id === id ? { ...ticket, status: newStatus } : ticket
+      )
+    );
   };
 
   const statusColors = {
@@ -159,9 +142,24 @@ const TicketSearch = () => {
               <div className="ticket-date">{ticket.date}</div>
             </div>
             <div className="ticket-buttons">
-              <button className="ticket-btn add-btn">Add</button>
-              <button className="ticket-btn edit-btn">Edit</button>
-              <button className="ticket-btn cancel-btn">Cancel</button>
+              <button
+                className="ticket-btn add-btn"
+                onClick={() => handleStatusChange(ticket.id, "confirmed")}
+              >
+                Add
+              </button>
+              <button
+                className="ticket-btn edit-btn"
+                onClick={() => alert("Edit functionality not implemented yet!")}
+              >
+                Edit
+              </button>
+              <button
+                className="ticket-btn cancel-btn"
+                onClick={() => handleStatusChange(ticket.id, "canceled")}
+              >
+                Cancel
+              </button>
             </div>
           </div>
         ))}
