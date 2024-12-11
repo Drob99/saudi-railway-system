@@ -10,9 +10,10 @@ if (!process.env.DATABASE_URL) {
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   max: 10, // Maximum number of connections in the pool
-  idleTimeoutMillis: 30000, // Close idle connections after 30 seconds
-  connectionTimeoutMillis: 2000, // Return an error if a connection cannot be established in 2 seconds
+  // idleTimeoutMillis: 30000, // Close idle connections after 30 seconds
+  // connectionTimeoutMillis: 2000, // Return an error if a connection cannot be established in 2 seconds
 });
+
 
 // Test the database connection (only in development mode)
 if (process.env.NODE_ENV !== 'production') {

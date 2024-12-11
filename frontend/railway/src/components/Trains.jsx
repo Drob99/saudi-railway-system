@@ -4,6 +4,16 @@ import trainLogo from "../images/trainLogo.png";
 const Trains = () => {
   // Train data defined locally
   const trains = [
+    // {
+    //   "trainid": 1,
+    //   "name_english": "HHR100",
+    //   "name_arabic": "قطار الحرمين السريع",
+    //   "departuretime": "2024-12-10T05:00:00.000Z",
+    //   "arrivaltime": "2024-12-10T09:00:00.000Z",
+    //   "originstationid": 1,
+    //   "destinationstationid": 2,
+    //   "availableseats": "399"
+    // },
     {
       id: 1,
       number: "TR 101",
