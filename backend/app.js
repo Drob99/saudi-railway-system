@@ -13,6 +13,10 @@ const trainRoutes = require("./routes/trainRoutes");
 
 const app = express();
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 // Enable security headers
 app.use(helmet());
 

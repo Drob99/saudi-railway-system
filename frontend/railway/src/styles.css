@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   color: white;
-  background-image: linear-gradient(90deg, #F9F6EE, #017F99);
+  background-image: linear-gradient(180deg, #F9F6EE, #017F99);
 }
 
 .auth-form-container, .login-form, .register-form {
@@ -47,4 +47,572 @@ button {
   background: none;
   color: white;
   text-decoration: underline;
+}
+
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.railway-system {
+  text-align: center;
+}
+
+.railway-system-title {
+  -webkit-text-stroke: 1px #017F99;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  margin: 0 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-button {
+  padding: 8px 16px;
+  background-color: #ffffff;
+  color: #017F99;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #F9F6EE;
+}
+
+.train-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.train-card {
+  background-color: #ffffff;
+  width: 300px;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  text-align: left;
+}
+
+.train-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.train-logo {
+  width: 40px;
+  height: 40px;
+}
+
+.train-number {
+  font-weight: bold;
+  font-size: 16px;
+  color: #017F99;
+}
+
+.train-date {
+  color: #888;
+  font-size: 14px;
+}
+
+.train-card-body {
+  margin-bottom: 16px;
+}
+
+.train-route {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #017F99;
+}
+
+.train-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.train-seats,
+.train-price {
+  font-size: 14px;
+  color: #555;
+}
+
+.book-button {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.book-button:hover {
+  background-color: #017F99;
+}
+
+/* Booking Form */
+.booking-form {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  gap: 20px;
+}
+
+.left-section {
+  flex: 1.5;
+  background: #f1f1f1;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.left-section h1 {
+  margin-bottom: 20px;
+  color: #017F99;
+}
+
+.passenger-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.passenger-form input {
+  flex: 1 1 calc(50% - 10px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+/* Styling for button container */
+.button-container {
+  display: flex;
+  gap: 10px; /* Adds space between the buttons */
+  margin-bottom: 20px; /* Adds space below the button container */
+}
+
+.button-container button {
+  padding: 10px 15px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition effect */
+}
+
+.button-container button:hover {
+  background-color: #017F99;
+}
+
+.right-section {
+  flex: 1.2; /* Increased to make the right-section wider */
+  background: #f1f1f1;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.right-section h2 {
+  margin-bottom: 15px;
+  color: #017F99;
+}
+
+.right-section p {
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+.right-section button {
+  width: 100%;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.right-section button:hover {
+  background-color: #017F99;
+}
+
+/* Styling the horizontal navigation bar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Center the navigation bar's items */
+  align-items: center;
+  padding: 10px 20px;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+/* Style for the navigation links list to ensure horizontal layout */
+.nav-links {
+  display: flex;
+  gap: 10px; /* Add spacing between buttons */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* General button style */
+.nav-link {
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 16px;
+  color: black;
+  border: 1px solid black;
+  border-radius: 25px; /* Round edges */
+  background-color: transparent;
+  transition: background-color 0.4s ease, color 0.4s ease, border 0.4s ease;
+  flex: 1; /* Ensures buttons are equal in size */
+  text-align: center;
+}
+
+/* Hover effect */
+.nav-link:hover {
+  background-color: #017F99;
+  color: white;
+  border: none; /* Remove border on hover */
+}
+
+
+.ticket-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.ticket-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.ticket-card {
+  position: relative;
+  width: 300px;
+  color: #017F99;
+  background-color: white;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  text-align: left;
+}
+
+/* Ticket image at the top left */
+.ticket-image {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 40px;
+  height: 40px;
+}
+
+.ticket-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+/* Status at the top right */
+.ticket-status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  color: white;
+}
+
+.ticket-info {
+  margin: 50px 0 20px 0;
+}
+
+.ticket-name {
+  font-weight: bold;
+}
+
+.ticket-contact,
+.ticket-date {
+  color: grey;
+}
+
+.ticket-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ticket-btn {
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+.add-btn {
+  color: #000000;
+  background-color: transparent;
+  border: 1px solid #017f99;
+}
+
+.edit-btn {
+  color: #000000;
+  background-color: transparent;
+  border: 1px solid #017f99;
+}
+
+.cancel-btn {
+  color: #000000;
+  background-color: transparent;
+  border: 1px solid red;
+}
+
+.edit-btn:hover {
+  color: white;
+  background-color: #017f99;
+  transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+  color: white;
+  background-color: #017f99;
+  transition: background-color 0.3s ease;
+}
+
+.cancel-btn:hover {
+  color: white;
+  background-color: red;
+  transition: background-color 0.3s ease;
+}
+
+/* Container styling */
+.reservations-container {
+  padding: 20px;
+  text-align: center;
+}
+
+/* Search bar styling */
+.search-bar {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.search-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 300px;
+}
+
+.search-button {
+  padding: 8px 16px;
+  background-color: #017F99;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #015d70;
+}
+
+/* Error message styling */
+.error-message {
+  color: red;
+  margin-bottom: 20px;
+}
+
+/* Reservation card styling */
+.reservation-card {
+  width: 400px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: left;
+  position: relative;
+}
+
+/* Status badge styling */
+.reservation-status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+/* Reservation details styling */
+.reservation-info p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: black;
+}
+
+/* Top section: Train logo, number, and date */
+.train-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.train-card-logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.train-card-number {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #017F99;
+  margin-right: 10px;
+}
+
+.train-card-date {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Capacity section: Economy and Business */
+.train-card-body {
+  padding: 15px;
+  background-color: #ffffff;
+}
+
+.train-card-capacity {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.train-card-capacity-info {
+  font-size: 0.9rem;
+  color: #888;
+  text-align: center;
+  flex: 1;
+}
+
+/* Station list */
+.train-card-stations {
+  padding: 10px 0;
+}
+
+.train-card-stations h3 {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+.train-card-stations ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.train-card-stations li {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 5px 0;
+}
+
+/* Assign Staff Button */
+.train-card-assign-button {
+  display: block;
+  width: 100%;
+  margin: 15px auto 0;
+  padding: 10px 15px;
+  font-size: 1rem;
+  color: #ffffff;
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.train-card-assign-button:hover {
+  background-color: #017F99;
+}
+
+/* Card Container */
+.train-card-item {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 15px 0;
+  background-color: #ffffff;
+  max-width: 500px;
+}
+
+.trains-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.trains-system {
+  padding: 20px;
+}
+
+.trains-system-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
 }
