@@ -6,33 +6,39 @@ const TicketSearch = () => {
     firstName: "",
     lastName: "",
     status: "",
-    date: "",
+    departuretime: "",
   });
 
   const [tickets, setTickets] = useState([
     {
-      id: 1,
+      bookingid: 1,
       firstName: "John",
       lastName: "Doe",
       status: "confirmed",
-      contact: "john.doe@example.com",
-      date: "2024-01-15",
+      ContactInfo: "john.doe@example.com",
+      departuretime: "2024-01-15",
+      class: "economy",
+      SeatNumber: "A12",
     },
     {
-      id: 2,
+      bookingid: 2,
       firstName: "Jane",
       lastName: "Smith",
       status: "pending",
-      contact: "123-456-7890",
-      date: "2024-02-20",
+      ContactInfo: "123-456-7890",
+      departuretime: "2024-02-20",
+      class: "business",
+      SeatNumber: "B3",
     },
     {
-      id: 3,
+      bookingid: 3,
       firstName: "Alice",
       lastName: "Johnson",
       status: "waitlisted",
-      contact: "alicejohnson@mail.com",
-      date: "2024-03-10",
+      ContactInfo: "alicejohnson@mail.com",
+      departuretime: "2024-03-10",
+      class: "economy",
+      SeatNumber: "C7",
     },
   ]);
 
@@ -53,17 +59,20 @@ const TicketSearch = () => {
             .toLowerCase()
             .includes(searchFilters.lastName.toLowerCase())) &&
         (searchFilters.status === "" || ticket.status === searchFilters.status) &&
-        (searchFilters.date === "" || ticket.date === searchFilters.date)
+        (searchFilters.departuretime === "" ||
+          ticket.departuretime === searchFilters.departuretime)
       );
     });
 
     setTickets(filteredTickets);
   };
 
-  const handleStatusChange = (id, newStatus) => {
+  const handleStatusChange = (bookingid, newStatus) => {
     setTickets((prevTickets) =>
       prevTickets.map((ticket) =>
-        ticket.id === id ? { ...ticket, status: newStatus } : ticket
+        ticket.bookingid === bookingid
+          ? { ...ticket, status: newStatus }
+          : ticket
       )
     );
   };
@@ -109,8 +118,8 @@ const TicketSearch = () => {
         </select>
         <input
           type="date"
-          name="date"
-          value={searchFilters.date}
+          name="departuretime"
+          value={searchFilters.departuretime}
           onChange={handleChange}
           className="search-input"
         />
@@ -120,7 +129,7 @@ const TicketSearch = () => {
       </div>
       <div className="ticket-cards">
         {tickets.map((ticket) => (
-          <div key={ticket.id} className="ticket-card">
+          <div key={ticket.bookingid} className="ticket-card">
             {/* Ticket image at top left */}
             <div className="ticket-image">
               <img src={ticketPNG} alt="ticket" />
@@ -138,13 +147,13 @@ const TicketSearch = () => {
               <div className="ticket-name">
                 {ticket.firstName} {ticket.lastName}
               </div>
-              <div className="ticket-contact">{ticket.contact}</div>
-              <div className="ticket-date">{ticket.date}</div>
+              <div className="ticket-contact">{ticket.ContactInfo}</div>
+              <div className="ticket-date">{ticket.departuretime}</div>
             </div>
             <div className="ticket-buttons">
               <button
                 className="ticket-btn add-btn"
-                onClick={() => handleStatusChange(ticket.id, "confirmed")}
+                onClick={() => handleStatusChange(ticket.bookingid, "confirmed")}
               >
                 Add
               </button>
@@ -156,7 +165,7 @@ const TicketSearch = () => {
               </button>
               <button
                 className="ticket-btn cancel-btn"
-                onClick={() => handleStatusChange(ticket.id, "canceled")}
+                onClick={() => handleStatusChange(ticket.bookingid, "canceled")}
               >
                 Cancel
               </button>

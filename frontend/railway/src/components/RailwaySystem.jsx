@@ -4,38 +4,41 @@ import trainLogo from "../images/trainLogo.png";
 const RailwaySystem = () => {
   const trains = [
     {
-      id: 1,
-      number: "TR 101",
-      date: "2025-05-14",
-      source: "Mumbai",
-      destination: "Delhi",
-      seatsLeft: 100,
+      trainid: 1,
+      name_english: "TR 101",
+      departuretime: "2025-05-14",
+      originCityName: "Mumbai",
+      destinationCityName: "Delhi",
+      capacity_economy: 100,
+      capacity_econobusiness: 50,
       price: 50,
     },
     {
-      id: 2,
-      number: "TR 202",
-      date: "2025-04-04",
-      source: "Chennai",
-      destination: "Bangalore",
-      seatsLeft: 75,
+      trainid: 2,
+      name_english: "TR 202",
+      departuretime: "2025-04-04",
+      originCityName: "Chennai",
+      destinationCityName: "Bangalore",
+      capacity_economy: 75,
+      capacity_econobusiness: 30,
       price: 40,
     },
     {
-      id: 3,
-      number: "TR 303",
-      date: "2025-03-20",
-      source: "Kolkata",
-      destination: "Pune",
-      seatsLeft: 50,
+      trainid: 3,
+      name_english: "TR 303",
+      departuretime: "2025-03-20",
+      originCityName: "Kolkata",
+      destinationCityName: "Pune",
+      capacity_economy: 50,
+      capacity_econobusiness: 20,
       price: 60,
     },
   ];
 
   const [filters, setFilters] = useState({
-    source: "",
-    destination: "",
-    date: "",
+    originCityName: "",
+    destinationCityName: "",
+    departuretime: "",
   });
   const [filteredTrains, setFilteredTrains] = useState(trains);
   const [selectedTrain, setSelectedTrain] = useState(null);
@@ -48,13 +51,18 @@ const RailwaySystem = () => {
   };
 
   const handleSearch = () => {
-    const { source, destination, date } = filters;
+    const { originCityName, destinationCityName, departuretime } = filters;
     const result = trains.filter(
       (train) =>
-        (!source || train.source.toLowerCase().includes(source.toLowerCase())) &&
-        (!destination ||
-          train.destination.toLowerCase().includes(destination.toLowerCase())) &&
-        (!date || train.date === date)
+        (!originCityName ||
+          train.originCityName
+            .toLowerCase()
+            .includes(originCityName.toLowerCase())) &&
+        (!destinationCityName ||
+          train.destinationCityName
+            .toLowerCase()
+            .includes(destinationCityName.toLowerCase())) &&
+        (!departuretime || train.departuretime === departuretime)
     );
     setFilteredTrains(result);
   };
@@ -111,7 +119,7 @@ const RailwaySystem = () => {
     return (
       <div className="booking-form">
         <div className="left-section">
-          <h1>{selectedTrain.number}</h1>
+          <h1>{selectedTrain.name_english}</h1>
           <div className="button-container">
             <button onClick={handleRemovePassenger}>Remove Passenger</button>
             <button onClick={handleAddPassenger}>Add Passenger</button>
@@ -164,9 +172,9 @@ const RailwaySystem = () => {
         </div>
         <div className="right-section">
           <h2>Booking Summary</h2>
-          <p>From: {selectedTrain.source}</p>
-          <p>To: {selectedTrain.destination}</p>
-          <p>Date: {selectedTrain.date}</p>
+          <p>From: {selectedTrain.originCityName}</p>
+          <p>To: {selectedTrain.destinationCityName}</p>
+          <p>Date: {selectedTrain.departuretime}</p>
           <p>Passengers: {passengers.length}</p>
           <p>Price per ticket: ${selectedTrain.price}</p>
           <p>Total Price (15% VAT): ${totalPrice.toFixed(2)}</p>
@@ -178,28 +186,28 @@ const RailwaySystem = () => {
 
   return (
     <div className="railway-system">
-      <h1 class = "railway-system-title">Home page</h1>
+      <h1 className="railway-system-title">Home page</h1>
       <div className="search-form">
         <input
           type="text"
-          name="source"
+          name="originCityName"
           placeholder="Source City"
-          value={filters.source}
+          value={filters.originCityName}
           onChange={handleInputChange}
           className="search-input"
         />
         <input
           type="text"
-          name="destination"
+          name="destinationCityName"
           placeholder="Destination City"
-          value={filters.destination}
+          value={filters.destinationCityName}
           onChange={handleInputChange}
           className="search-input"
         />
         <input
           type="date"
-          name="date"
-          value={filters.date}
+          name="departuretime"
+          value={filters.departuretime}
           onChange={handleInputChange}
           className="search-input"
         />
@@ -210,23 +218,23 @@ const RailwaySystem = () => {
       <div className="train-cards">
         {filteredTrains.length > 0 ? (
           filteredTrains.map((train) => (
-            <div key={train.id} className="train-card">
+            <div key={train.trainid} className="train-card">
               <div className="train-card-header">
                 <img
                   src={trainLogo}
                   alt="Train Logo"
                   className="train-logo"
                 />
-                <span className="train-number">{train.number}</span>
-                <span className="train-date">{train.date}</span>
+                <span className="train-number">{train.name_english}</span>
+                <span className="train-date">{train.departuretime}</span>
               </div>
               <div className="train-card-body">
                 <p className="train-route">
-                  From {train.source} to {train.destination}
+                  From {train.originCityName} to {train.destinationCityName}
                 </p>
                 <div className="train-info">
                   <span className="train-seats">
-                    Seats Left: {train.seatsLeft}
+                    Economy: {train.capacity_economy}, Business: {train.capacity_econobusiness}
                   </span>
                   <span className="train-price">Price: ${train.price}</span>
                 </div>

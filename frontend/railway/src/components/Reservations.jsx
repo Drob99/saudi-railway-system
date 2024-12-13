@@ -1,42 +1,42 @@
 import React, { useState } from "react";
 
 const Reservations = () => {
-  const [reservationID, setReservationID] = useState("");
+  const [bookingID, setBookingID] = useState("");
   const [reservationDetails, setReservationDetails] = useState(null);
   const [error, setError] = useState("");
 
   // Dummy reservations data
   const reservations = [
     {
-      id: "12345",
-      passengers: 2,
-      luggage: 3,
+      bookingid: "12345",
+      numofpassengers: 2,
+      numofluggage: 3,
       seats: ["A1", "A2"],
-      price: 150.0,
+      basefare: 130.43,
       status: "confirmed",
     },
     {
-      id: "67890",
-      passengers: 1,
-      luggage: 1,
+      bookingid: "67890",
+      numofpassengers: 1,
+      numofluggage: 1,
       seats: ["B3"],
-      price: 80.0,
+      basefare: 69.57,
       status: "waitlisted",
     },
     {
-      id: "54321",
-      passengers: 3,
-      luggage: 4,
+      bookingid: "54321",
+      numofpassengers: 3,
+      numofluggage: 4,
       seats: ["C4", "C5", "C6"],
-      price: 250.0,
+      basefare: 217.39,
       status: "canceled",
     },
   ];
 
   const handleSearch = () => {
-    // Find reservation by ID
+    // Find reservation by booking ID
     const foundReservation = reservations.find(
-      (reservation) => reservation.id === reservationID
+      (reservation) => reservation.bookingid === bookingID
     );
 
     if (foundReservation) {
@@ -44,7 +44,7 @@ const Reservations = () => {
       setError("");
     } else {
       setReservationDetails(null);
-      setError("No reservation found with the entered ID.");
+      setError("No reservation found with the entered booking ID.");
     }
   };
 
@@ -61,9 +61,9 @@ const Reservations = () => {
       <div className="search-bar">
         <input
           type="text"
-          placeholder="Enter Reservation ID"
-          value={reservationID}
-          onChange={(e) => setReservationID(e.target.value)}
+          placeholder="Enter Booking ID"
+          value={bookingID}
+          onChange={(e) => setBookingID(e.target.value)}
           className="search-input"
         />
         <button onClick={handleSearch} className="search-button">
@@ -86,12 +86,20 @@ const Reservations = () => {
               reservationDetails.status.slice(1)}
           </div>
           <div className="reservation-info">
-            <p><strong>Number of Passengers:</strong> {reservationDetails.passengers}</p>
-            <p><strong>Number of Luggage:</strong> {reservationDetails.luggage}</p>
-            <p><strong>Seats:</strong> {reservationDetails.seats.join(", ")}</p>
+            <p>
+              <strong>Number of Passengers:</strong>{" "}
+              {reservationDetails.numofpassengers}
+            </p>
+            <p>
+              <strong>Number of Luggage:</strong>{" "}
+              {reservationDetails.numofluggage}
+            </p>
+            <p>
+              <strong>Seats:</strong> {reservationDetails.seats.join(", ")}
+            </p>
             <p>
               <strong>Total Price (with VAT):</strong> $
-              {(reservationDetails.price * 1.15).toFixed(2)}
+              {(reservationDetails.basefare * 1.15).toFixed(2)}
             </p>
           </div>
         </div>
