@@ -87,17 +87,18 @@ CREATE TABLE TrainStaff (
     UNIQUE (TrainID, PersonID)         -- Ensure a staff member is assigned only once to a train
 );
 
--- Booking Table
+
+
+-- Booking Table (Updated)
 CREATE TABLE Booking (
     BookingID SERIAL PRIMARY KEY,
-    
     Class VARCHAR(10) NOT NULL CHECK (Class IN ('Economy', 'Business')),
     Status VARCHAR(15) NOT NULL CHECK (Status IN ('Confirmed', 'Cancelled', 'Waiting')),
     Date DATE NOT NULL,
     BaseFare DECIMAL(10, 2) NOT NULL,
     NumOfLuggage INT DEFAULT 0,
     SeatNumber INT NOT NULL,
-    NumOfPassengers INT DEFAULT 1,
+    DependentID INT DEFAULT NULL, -- Added column for dependents
     TripID INT NOT NULL,
     TrainID INT NOT NULL,
     TrackID INT NOT NULL,
@@ -105,6 +106,7 @@ CREATE TABLE Booking (
     DestinationStationID INT NOT NULL,
     PassengerID INT NOT NULL,
     StaffID INT DEFAULT NULL,
+    FOREIGN KEY (DependentID) REFERENCES Dependent(DepID), -- Foreign key for dependents
     FOREIGN KEY (TripID, TrainID, TrackID, OriginStationID, DestinationStationID) REFERENCES Trip(TripID, TrainID, TrackID, OriginStationID, DestinationStationID),
     FOREIGN KEY (PassengerID) REFERENCES Passenger(PersonID),
     FOREIGN KEY (StaffID) REFERENCES Staff(PersonID)
