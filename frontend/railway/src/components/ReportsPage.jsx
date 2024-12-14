@@ -116,34 +116,67 @@ const ReportsPage = () => {
         {data && data.success && data.data && (
           <div className="bg-white p-4 rounded shadow">
             <h2 className="text-lg font-bold text-primary-700 mb-4">Results</h2>
-            <table className="w-full table-auto border-collapse">
-              <thead>
-                <tr>
-                  {Object.keys(data.data[0] || {}).map((key) => (
-                    <th
-                      key={key}
-                      className="border px-4 py-2 text-left text-sm font-bold text-gray-700"
-                    >
-                      {key}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {data.data.map((row, index) => (
-                  <tr key={index} className="border-t">
-                    {Object.values(row).map((value, i) => (
-                      <td
-                        key={i}
-                        className="border px-4 py-2 text-sm text-gray-600"
+            {Array.isArray(data.data) ? (
+              <table className="w-full table-auto border-collapse">
+                <thead>
+                  <tr>
+                    {Object.keys(data.data[0] || {}).map((key) => (
+                      <th
+                        key={key}
+                        className="border px-4 py-2 text-left text-sm font-bold text-gray-700"
                       >
-                        {value}
-                      </td>
+                        {key}
+                      </th>
                     ))}
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {data.data.map((row, index) => (
+                    <tr key={index} className="border-t">
+                      {Object.values(row).map((value, i) => (
+                        <td
+                          key={i}
+                          className="border px-4 py-2 text-sm text-gray-600"
+                        >
+                          {value}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : data.data.trains ? (
+              <table className="w-full table-auto border-collapse">
+                <thead>
+                  <tr>
+                    {Object.keys(data.data.trains[0] || {}).map((key) => (
+                      <th
+                        key={key}
+                        className="border px-4 py-2 text-left text-sm font-bold text-gray-700"
+                      >
+                        {key}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.data.trains.map((row, index) => (
+                    <tr key={index} className="border-t">
+                      {Object.values(row).map((value, i) => (
+                        <td
+                          key={i}
+                          className="border px-4 py-2 text-sm text-gray-600"
+                        >
+                          {value}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <p>No data available</p>
+            )}
           </div>
         )}
       </div>
