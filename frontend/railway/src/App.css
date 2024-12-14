@@ -1,3 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .glass {
+    @apply bg-white bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-30 backdrop-saturate-150 backdrop-contrast-75;
+  }
+}
+* {
+  font-family: "Space Grotesk", sans-serif;
+}
 .App {
   text-align: center;
 }

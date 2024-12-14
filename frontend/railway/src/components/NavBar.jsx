@@ -1,35 +1,53 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useUser } from "../hooks/use_user";
 
 const NavBar = () => {
+  const location = useLocation();
+  const { isStaff, user } = useUser();
+
+  const navItems = [
+    ...(!user
+      ? []
+      : [
+          { path: "/", label: "Home Page" },
+          { path: "/reports", label: "Reports" }, // Add Reports for both staff and passengers
+          ...(isStaff
+            ? [
+                { path: "/staff-booking", label: "Staff Booking" },
+                { path: "/staff-reservations", label: "Staff Reservations" },
+              ]
+            : []),
+        ]),
+    { path: "/login", label: "Log out" },
+  ];
+
+  const isActive = (path) => {
+    if (path === "/" && location.pathname === "/") return true;
+    return location.pathname === path;
+  };
+
   return (
-    <nav className="navbar">
+    <nav className="navbar glass">
       <ul className="nav-links">
-        <li>
-          <Link to="/railway" className="nav-link">
-            Home Page
-          </Link>
-        </li>
-        <li>
-          <Link to="/tickets" className="nav-link">
-            Tickets
-          </Link>
-        </li>
-        <li>
-          <Link to="/trains" className="nav-link">
-            Trains
-          </Link>
-        </li>
-        <li>
-          <Link to="/reservations" className="nav-link">
-            Reservations
-          </Link>
-        </li>
-        <li>
-          <Link to="/login" className="nav-link">
-            Log out
-          </Link>
-        </li>
+        {navItems.map((item) => (
+          <li key={item.path}>
+            <Link
+              to={item.path}
+              className={`
+                px-4 py-2 
+                text-sm 
+                transition-colors duration-200
+                font-bold
+                rounded-md
+                hover:bg-primary-700 hover:text-white
+                ${isActive(item.path) ? "bg-primary-700 text-white" : ""}
+              `}
+            >
+              {item.label}
+            </Link>
+          </li>
+        ))}
       </ul>
     </nav>
   );

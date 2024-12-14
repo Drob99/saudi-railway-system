@@ -1,59 +1,25 @@
 import React from "react";
 import trainLogo from "../images/trainLogo.png";
+import { useQuery } from "react-query";
+import axios from "axios";
+import { API } from "../utils/api";
 
 const Trains = () => {
-  // Train data defined locally
-  const trains = [
-    // {
-    //   "trainid": 1,
-    //   "name_english": "HHR100",
-    //   "name_arabic": "قطار الحرمين السريع",
-    //   "departuretime": "2024-12-10T05:00:00.000Z",
-    //   "arrivaltime": "2024-12-10T09:00:00.000Z",
-    //   "originstationid": 1,
-    //   "destinationstationid": 2,
-    //   "availableseats": "399"
-    // },
-    {
-      id: 1,
-      number: "TR 101",
-      date: "2025-05-14",
-      source: "Mumbai",
-      destination: "Delhi",
-      economyCapacity: 200,
-      businessCapacity: 50,
-      stations: [
-        { name: "Mumbai Central", city: "Mumbai" },
-        { name: "Delhi Junction", city: "Delhi" },
-      ],
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["SearchTrains"],
+    queryFn: async () => {
+      const { data } = await axios.get(
+        `${API}/v1/trains/search?originStationId=1&destinationStationId=2&departureDate=2024-12-10%2008:00:00&class=Economy`
+      );
+      return data;
     },
-    {
-      id: 2,
-      number: "TR 202",
-      date: "2025-04-04",
-      source: "Chennai",
-      destination: "Bangalore",
-      economyCapacity: 150,
-      businessCapacity: 30,
-      stations: [
-        { name: "Chennai Central", city: "Chennai" },
-        { name: "Bangalore City", city: "Bangalore" },
-      ],
-    },
-    {
-      id: 3,
-      number: "TR 303",
-      date: "2025-03-20",
-      source: "Kolkata",
-      destination: "Pune",
-      economyCapacity: 100,
-      businessCapacity: 20,
-      stations: [
-        { name: "Howrah Junction", city: "Kolkata" },
-        { name: "Pune Junction", city: "Pune" },
-      ],
-    },
-  ];
+  });
+  
+  if (isLoading) return <div>Loading</div>;
+
+  if (error) return <div>{error.message ?? "error"}</div>;
+
+  const trains = data.data;
 
   return (
     <div className="trains-system">
@@ -61,29 +27,37 @@ const Trains = () => {
       <div className="trains-cards-container">
         {trains.length > 0 ? (
           trains.map((train) => (
-            <div key={train.id} className="train-card-item">
+            <div key={train["trainid"]} className="train-card-item">
               <div className="train-card-header">
-                <img src={trainLogo} alt="Train Logo" className="train-card-logo" />
-                <span className="train-card-number">{train.number}</span>
-                <span className="train-card-date">{train.date}</span>
+                <img
+                  src={trainLogo}
+                  alt="Train Logo"
+                  className="train-card-logo"
+                />
+                <span className="train-card-number">
+                  {train["name_english"]}
+                </span>
+                <span className="train-card-date">
+                  {train["departuretime"]}
+                </span>
               </div>
-              <div className="train-card-body">
+              <div className="train-card-body ">
                 <div className="train-card-capacity">
                   <p className="train-card-capacity-info">
-                    Economy: {train.economyCapacity}
+                    Economy: {train["economycapacity"]}
                   </p>
                   <p className="train-card-capacity-info">
-                    Business: {train.businessCapacity}
+                    Business: {train["businesscapacity"]}
                   </p>
                 </div>
                 <div className="train-card-stations">
                   <h3>Stations:</h3>
                   <ul>
-                    {train.stations.map((station, index) => (
+                    {/* {train.stations.map((station, index) => (
                       <li key={index}>
                         {station.name}, {station.city}
                       </li>
-                    ))}
+                    ))} */}
                   </ul>
                 </div>
               </div>
